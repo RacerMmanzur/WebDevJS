@@ -1,27 +1,32 @@
-//array literal
+//Array Literal
 const numbers = [12, 45, 33, 29, 39];
 
-//array constructor
-const fruit = new Array('apple', 'grape', 'orange');
+//Array Constructor
+const fruits = new Array('apple', 'grape', 'orange');
 
-//get value by index
-x = number[3];
+//Get value by index
+x = numbers[3];
 x = numbers[0] + numbers[3];
 
 //utilize template literals with array
-x = `my favorite fruit is an ${fruits[2]}`;
+x = `My favorite fruit is an ${fruits[2]}`;
 
 //length
 x = numbers.length;
 
 //change orange with pears
-fruits[2] = 'pear';
-x = fruits[2];
+// fruits[2] = 'pear';
+
+//length is not read only
+// fruits.length = 2;
 
 //adding fruits to our array (hardcoded)
 fruits[3] = 'strawberry';
+
+//use the length as the index and it will always add to the end
 fruits[fruits.length] = 'blueberry';
 fruits[fruits.length] = 'peach';
 fruits[fruits.length] = 'banana';
 
+x = fruits;
 console.log(x);
