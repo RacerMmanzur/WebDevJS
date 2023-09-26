@@ -99,8 +99,8 @@ The area of a rectangle with a length of 10 and a width of 5 is 50.
 //Solution
 
 (function () {
-const length = 45;
-const width = 7;
+const length = 10;
+const width = 5;
 const area = (length \* width);
 
 console.log(
