@@ -6,9 +6,7 @@ Now that you know the basics of how functions work, let's try a few challenges.
 
 **Instructions:**
 
-Create a function called `getCelsius()` that takes a temperature in Fahrenheit as an argument and returns the temperature in celsius.
-
-For bonus points, write it as a one line arrow function
+y
 
 **Expected Result:**
 
@@ -32,6 +30,9 @@ The formula for Fahrenheit to Celsius is `(F - 32) * 5 / 9`. Read more about the
   
 ```JavaScript
 //Solution Here
+const getCelsius = (fahrenheit) => (fahrenheit - 32) * (5 / 9);
+
+console.log(`The temperature is ${getCelsius(32)} \xB0C`);
 
 ````
 
@@ -59,13 +60,21 @@ console.log(minMax([1, 2, 3, 4, 5]));
 <details>
   <summary>Click For Solution</summary>
   
-```JavaScript
+  ```JavaScript
+
 //Solution
 
-````
+```
+const minMax = (num) => ({
+min: Math.min(...num),
+max: Math.max(...num),
+});
+
+console.log(minMax([1, 2, 3, 4, 5]));
+
+```
 
 </details>
-
 
 ## Challenge 3
 
@@ -76,7 +85,7 @@ Create an IIFE (Immediately Invoked Function Expression) that takes in the lengt
 ```JavaScript
 // On page load
 The area of a rectangle with a length of 10 and a width of 5 is 50.
-````
+```
 
 **Hints:**
 
@@ -89,7 +98,15 @@ The area of a rectangle with a length of 10 and a width of 5 is 50.
   ```JavaScript
 //Solution
 
+(function () {
+const length = 45;
+const width = 7;
+
+console.log(
+`The rectangle's dimensions are: length = ${length}, width = ${width}`
+);
+})();
+
 ```
 </details>
-
 ```
