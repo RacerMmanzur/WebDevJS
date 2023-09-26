@@ -15,8 +15,9 @@ console.log(minMax([1, 2, 3, 4, 5]));
 (function () {
   const length = 45;
   const width = 7;
+  const area = length * width;
 
   console.log(
-    `The rectangle's dimensions are: length = ${length}, width = ${width}`
+    `The area of a rectangle with a length of ${length} and a width of ${width} is ${area}.`
   );
 })();
