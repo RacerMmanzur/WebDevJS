@@ -23,8 +23,6 @@ calculator(5, 2, '&') // returns an error message
 
 ```JavaScript
 
-
-
 ```
 
 </details>
