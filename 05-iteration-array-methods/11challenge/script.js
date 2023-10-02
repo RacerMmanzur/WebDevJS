@@ -1,3 +1,4 @@
+//####################################################
 // Challenge 1
 const people = [
   {
@@ -45,7 +46,9 @@ const youngPeople = people
   }));
 
 console.log(youngPeople);
+//####################################################
 
+//####################################################
 // Challenge 2
 const numbers = [2, -30, 50, 20, -12, -9, 7];
 
@@ -54,12 +57,15 @@ const positiveSum = numbers
   .reduce((acc, cur) => acc + cur, 0);
 
 console.log(positiveSum);
+//####################################################
 
+//####################################################
 // Challenge 3
 const words = ['coder', 'programmer', 'developer'];
 
-const cWords = words.map((word) => {
+const capitalizedWords = words.map((word) => {
   return word[0].toUpperCase() + word.slice(1, word.length);
 });
 
-console.log(cWords);
+console.log(capitalizedWords);
+//####################################################
