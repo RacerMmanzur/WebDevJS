@@ -18,34 +18,34 @@
 
 //########################
 //remove the apple:
-// function removeFirstItem() {
-//   const ul = document.querySelector('ul');
-//   const li = document.querySelector('li:first-child');
-
-//   ul.removeChild(li);
-// }
-
-// removeFirstItem();
-
-//########################
-function removeItem(itemNumber) {
+function removeFirstItem() {
   const ul = document.querySelector('ul');
-  const li = document.querySelector(`li:nth-child(${itemNumber})`);
+  const li = document.querySelector('li:first-child');
 
   ul.removeChild(li);
 }
+
+removeFirstItem();
+
+//########################
+// function removeItem(itemNumber) {
+//   const ul = document.querySelector('ul');
+//   const li = document.querySelector(`li:nth-child(${itemNumber})`);
+
+//   ul.removeChild(li);
+// }
 
 // removeItem(1);
 // removeItem(2);
 
 //########################
 //utilizing queryselectorAll
-function removeItem2(itemNumber) {
-  const ul = document.querySelector('ul');
-  const li = document.querySelectorAll('li')[itemNumber - 1];
+// function removeItem2(itemNumber) {
+//   const ul = document.querySelector('ul');
+//   const li = document.querySelectorAll('li')[itemNumber - 1];
 
-  ul.removeChild(li);
-}
+//   ul.removeChild(li);
+// }
 // removeItem2(1);
 //########################
 //pano pag ayaw gamitin si parent
@@ -57,10 +57,10 @@ function removeItem2(itemNumber) {
 // removeItem3(1);
 //########################
 //shorten
-const removeItem4 = (itemNumber) =>
-  document.querySelectorAll('li')[itemNumber - 1].remove();
+// const removeItem4 = (itemNumber) =>
+//   document.querySelectorAll('li')[itemNumber - 1].remove();
 
-removeItem4(2);
+// removeItem4(2);
 
 //########################
 //########################
