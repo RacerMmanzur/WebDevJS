@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .catch((error) => console.error('Error fetching random user:', error))
       .finally(() => {
-        // Hide spinner after fetching data
         spinner.classList.add('hidden');
       });
   });
