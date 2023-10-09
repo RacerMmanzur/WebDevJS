@@ -1,5 +1,3 @@
-// https://jsonplaceholder.typicode.com/todos?_limit=10
-
 const apiURL = 'https://jsonplaceholder.typicode.com/todos';
 
 const getTodos = () => {
@@ -19,13 +17,15 @@ const addTodoToDOM = (todo) => {
     div.classList.add('done');
   }
 
+  div.addEventListener('click', () => markAsCompleted(todo.id));
+
+  div.addEventListener('dblclick', () => deleteFinishedTodoElement(todo.id));
+
   document.getElementById('todo-list').appendChild(div);
 };
 
 const createTodo = (e) => {
   e.preventDefault();
-  // console.log(1);
-  // console.log(e.target.firstElementChild.value);
 
   const newTodo = {
     title: e.target.firstElementChild.value,
@@ -41,6 +41,20 @@ const createTodo = (e) => {
   })
     .then((res) => res.json())
     .then((data) => addTodoToDOM(data));
+
+  e.target.firstElementChild.value = '';
+};
+
+const markAsCompleted = (todoId) => {
+  const todoElement = document.querySelector(`[data-id ='${todoId}']`);
+  todoElement.classList.toggle('done');
+};
+
+const deleteFinishedTodoElement = (todoId) => {
+  const todoElement = document.querySelector(`[data-id='${todoId}']`);
+  if (todoElement.classList.contains('done')) {
+    todoElement.remove();
+  }
 };
 
 const init = () => {
