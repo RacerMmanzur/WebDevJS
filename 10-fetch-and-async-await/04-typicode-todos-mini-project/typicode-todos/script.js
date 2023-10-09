@@ -1,7 +1,9 @@
+// https://jsonplaceholder.typicode.com/todos?_limit=10
+
 const apiURL = 'https://jsonplaceholder.typicode.com/todos';
 
 const getTodos = () => {
-  fetch(apiURL + '?_limit=5')
+  fetch(apiURL + '?_limit=10')
     .then((res) => res.json())
     .then((data) => {
       data.forEach((todo) => addTodoToDOM(todo));
@@ -10,6 +12,7 @@ const getTodos = () => {
 
 const addTodoToDOM = (todo) => {
   const div = document.createElement('div');
+  div.classList.add('todo');
   div.appendChild(document.createTextNode(todo.title));
   div.setAttribute('data-id', todo.id);
 
@@ -17,15 +20,13 @@ const addTodoToDOM = (todo) => {
     div.classList.add('done');
   }
 
-  div.addEventListener('click', () => markAsCompleted(todo.id));
-
-  div.addEventListener('dblclick', () => deleteFinishedTodoElement(todo.id));
-
   document.getElementById('todo-list').appendChild(div);
 };
 
 const createTodo = (e) => {
   e.preventDefault();
+  // console.log(1);
+  // console.log(e.target.firstElementChild.value);
 
   const newTodo = {
     title: e.target.firstElementChild.value,
@@ -41,25 +42,47 @@ const createTodo = (e) => {
   })
     .then((res) => res.json())
     .then((data) => addTodoToDOM(data));
-
-  e.target.firstElementChild.value = '';
 };
 
-const markAsCompleted = (todoId) => {
-  const todoElement = document.querySelector(`[data-id ='${todoId}']`);
-  todoElement.classList.toggle('done');
+const toggleCompleted = (e) => {
+  // e.target.classList.toggle('done'); //error ito
+  if (e.target.classList.contains('todo')) {
+    e.target.classList.toggle('done');
+    // console.log(e.target.dataset.id);
+    updateTodo(e.target.dataset.id, e.target.classList.contains('done'));
+  }
 };
 
-const deleteFinishedTodoElement = (todoId) => {
-  const todoElement = document.querySelector(`[data-id='${todoId}']`);
-  if (todoElement.classList.contains('done')) {
-    todoElement.remove();
+const updateTodo = (id, completed) => {
+  // console.log(id, completed);
+  fetch(`${apiURL}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ completed }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+const deleteTodo = (e) => {
+  if (e.target.classList.contains('todo')) {
+    const id = e.target.dataset.id;
+    // console.log(id);
+    fetch(`${apiURL}/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then(() => e.target.remove());
   }
 };
 
 const init = () => {
   document.addEventListener('DOMContentLoaded', getTodos);
   document.querySelector('#todo-form').addEventListener('submit', createTodo);
+  document
+    .querySelector('#todo-list')
+    .addEventListener('click', toggleCompleted);
+  document.querySelector('#todo-list').addEventListener('dblclick', deleteTodo);
 };
 
 init();
